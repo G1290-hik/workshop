@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison, avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -17,7 +19,7 @@ bool validateLogin(String email, String password) {
 
 void proceedLogin(BuildContext context) {
   Navigator.of(context).push(MaterialPageRoute(
-    builder: (context) => HomePage(),
+    builder: (context) => const HomePage(),
   ));
 }
 
@@ -35,30 +37,31 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.blue[500],
-        title: Text(
+        title: const Text(
           'Login',
           style: TextStyle(color: Colors.white),
         ),
       ),
       body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
         children: [
           Lottie.network(
               'https://lottie.host/9f1d00c6-d145-452a-b79b-151b04702d89/tr9cdv7oJJ.json',
               height: 200),
           TextField(
+            keyboardType: TextInputType.emailAddress,
             controller: emailController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'Email',
               border: OutlineInputBorder(),
             ),
           ),
           Container(height: 30),
           TextField(
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.text,
             obscureText: true,
             controller: passwordController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'Password',
               border: OutlineInputBorder(),
             ),
@@ -74,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                   print('Invalid Credentials');
                 }
               },
-              child: Text('Login'))
+              child: const Text('Login'))
         ],
       ),
     );
