@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
 import 'package:lottie/lottie.dart';
+
+import 'home_page.dart';
 
 final TextEditingController emailController = TextEditingController();
 final TextEditingController passwordController = TextEditingController();
 
 bool validateLogin(String email, String password) {
-  if (email != null && password!=null) {
+  if (email != null && password != null) {
     print("Email:$email");
     print("Password:$password");
     return true;
@@ -14,16 +15,12 @@ bool validateLogin(String email, String password) {
   return false;
 }
 
-
-
-
-
-
 void proceedLogin(BuildContext context) {
   Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => HomePage(),
-      ));
+    builder: (context) => HomePage(),
+  ));
 }
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -57,8 +54,9 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Container(height: 30),
-
           TextField(
+            keyboardType: TextInputType.emailAddress,
+            obscureText: true,
             controller: passwordController,
             decoration: InputDecoration(
               hintText: 'Password',
@@ -68,20 +66,17 @@ class _LoginPageState extends State<LoginPage> {
           Container(height: 30),
           ElevatedButton(
               onPressed: () {
-                
                 if (validateLogin(
                     emailController.text, passwordController.text)) {
-                      print('Valid Credentials');
+                  print('Valid Credentials');
                   proceedLogin(context);
-                }
-                else {
+                } else {
                   print('Invalid Credentials');
                 }
               },
               child: Text('Login'))
         ],
       ),
-
     );
   }
 }
